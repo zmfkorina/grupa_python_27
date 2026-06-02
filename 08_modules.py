@@ -1,37 +1,42 @@
+
 import os
 
 # operating system interaction
 
-print(os.getcwd())
+print(os.listdir())
 
 if os.path.exists("manage.py"):
-    print("Avem fisierul in acest folder")
+    print("Avem fisierul manage.py in acest folder")
     print(os.path.getsize("manage.py"))
 else:
-    print("nema")
+    print("File not found")
+
 
 # os.listdir() returneaza o lista de nume de foldere si fisiere
-# os.path.isfile(fisier) returneaza True daca "fisier" este un fisier
-# os.path.getsize(fisier) returneaza marimea fisierului
+# os.path.isfile(fisier) returneaza True daca "fisier" este un fisier.
+# os.path.getsize(fisier) returneaza marimea fisierului.
 
-#Ex.: Creati o functie care trece prin fisierele din folderul curent si returneaza marimea totala a fisierelor
+# Ex.: Creati o functie care trece prin fisierele din folderul curent si returneaza marimea totala a fisierelor.
 
-def marime_totala():
+def total_files_size():
     """
     Function that returns total file size for all files in root level directory.
     :return: total file size, in KB
     """
+    files = os.listdir()
     total = 0
-    fisiere = os.listdir()
-    print(fisiere)
+    for f in files:
+        if os.path.isfile(f):
+            marime = os.path.getsize(f)
+            total = total + marime
+    return total / 1024
 
-    for fisier in fisiere:
-        # verificam daca este fisier
-        if os.path.isfile(fisier):
-            print(fisier)
-            # adaugam marimea fisierului
-            total += os.path.getsize(fisier)
+# baza 2, nu baza 10
+# 1 bit -> 0 1
+# 1 byte -> 8 biti
+# 1 kbyte -> 2 ^ 8
 
-    return total
+# 2 4 8 16 32 64 128 256 512 1024 2048 ....
 
-print(marime_totala())
+# cati kb?
+print(total_files_size())
