@@ -105,6 +105,8 @@ print(result2)
 
 # tema:
 
+print("Tema procesare stringuri")
+
 # "ERR-Value Error-ER:10"
 # "INF-Program launch Info-CD:5"
 # "WRN-Low memory-WR:11"
